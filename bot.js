@@ -11,9 +11,8 @@ client.once('ready', () => {
 });
 
 async function gif_generate(msg) {
-    console.log("bot recognizes function")
-    console.log(msg.content)
     if(msg.content.startsWith(`${prefix}gif`)){
+        console.log(msg.content)
         if(msg.content.split(" ").length > 2) {
             msg.reply("too many parameters, remember it's '!gif' followed by topic word")
         } else {
