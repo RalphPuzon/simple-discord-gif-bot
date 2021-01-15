@@ -10,16 +10,24 @@ client.once('ready', () => {
     console.log("CTBot is now active in this server")
 });
 
+let gifReturnData = (obj, msg) => {
+    let returnUrl = obj.results[Math.floor(Math.random()*30)].url
+    msg.reply(returnUrl)
+    return returnUrl
+}
+
 async function gif_generate(msg) {
     if(msg.content.startsWith(`${prefix}gif`)){
-        console.log(msg.content)
         if(msg.content.split(" ").length > 2) {
-            msg.reply("too many parameters, remember it's '!gif' followed by topic word")
+            msg.reply("too many parameters, remember it's '!gif' followed by one topic word")
         } else {
+            let uName = msg.author.username;
+            let queryWord =  msg.content;
             let url = `https://api.tenor.com/v1/search?q=${msg.content.split(' ')[1]}&key=${gifkey}&limit=30`;
             let response = await fetch(url);
             let json = await response.json();
-            msg.reply(json.results[Math.floor(Math.random()*30)].url)
+            let output = gifReturnData(json, msg)
+            console.log(uName, queryWord, output)
         }
     }
 }
