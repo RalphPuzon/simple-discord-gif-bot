@@ -2,8 +2,7 @@
 *NOTE: This is NOT a production grade script, so please do not utilize for projects that contain sensitive information.*
 
 This is a simple demonstration of a discord bot that will fetch a GIF
-image using the tenor API, given a single word query (this is by design,
-get creative.)
+image using the tenor API, given a string query
 
 ## How to use:
 1. Set up a discord bot (there are plenty of youtube tutorials on this)
