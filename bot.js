@@ -7,7 +7,7 @@ const client = new Discord.Client();
 
 //this event will only trigger one time after logging in
 client.once('ready', () => {
-    console.log("CTBot is now active in this server")
+    console.log("TheBot is now active in this server")
 });
 
 let gifReturnData = (obj, msg) => {
@@ -34,3 +34,21 @@ async function gif_generate(msg) {
 
 client.login(token);
 client.on("message", gif_generate)
+
+
+async function gif_generate(msg) {
+    if(msg.content.startsWith(`${prefix}gif`)){
+        let uName = msg.author.username;
+        let query =  msg.content;
+
+        let tmp = query.split(" ")
+        tmp.shift()
+        tmp = tmp.join("%20")
+
+        let url = `https://api.tenor.com/v1/search?q=${tmp}&key=${gifkey}&limit=30`;
+        let response = await fetch(url);
+        let json = await response.json();
+        let output = gifReturnData(json, msg)
+        console.log(uName, query, output)
+    }
+}
