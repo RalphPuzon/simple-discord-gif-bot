@@ -7,7 +7,7 @@ const client = new Discord.Client();
 
 //  this event will only trigger one time after logging in
 client.once('ready', () => {
-    console.log("TheBot is now active in this server");
+    console.log("GIFBot is now active in this server");
 });
 
 //  randomizer helper
